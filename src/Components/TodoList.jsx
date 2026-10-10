@@ -12,10 +12,12 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Todo from "./Todo";
 import { useContext, useEffect } from "react";
 import { TodoContext } from "../Contexts/TodoContext";
+import { ToastContext } from "../Contexts/ToastContext";
 
 // Main Function
 export default function TodoList() {
   const { todosInput, setTodosInput } = useContext(TodoContext);
+  const { showHideToast } = useContext(ToastContext);
   const [input, setInput] = useState("");
   const [displayedType, setDisplayedType] = useState("all");
 
@@ -52,6 +54,7 @@ export default function TodoList() {
     setTodosInput(updatedTodos);
     localStorage.setItem("Todos", JSON.stringify(updatedTodos));
     setInput("");
+    showHideToast("تمت إضافة المهمة بنجاح");
   }
   function handleDisplayedType(e) {
     setDisplayedType(e.target.value);
@@ -71,7 +74,7 @@ export default function TodoList() {
     localStorage.setItem("Todos", JSON.stringify(updatedTodos));
   }
   useEffect(() => {
-    const storageTodos = JSON.parse(localStorage.getItem("Todos"));
+    const storageTodos = JSON.parse(localStorage.getItem("Todos")) || [];
     setTodosInput(storageTodos);
   }, []);
   // Main Return
@@ -113,7 +116,6 @@ export default function TodoList() {
                 sx={{ width: "100%" }}
                 label="مهمة جديدة"
                 variant="outlined"
-              
               />
             </Grid>
             <Grid size={4}>
