@@ -18,6 +18,10 @@ A simple and responsive Todo List application built with React. It helps users m
 - LocalStorage
 - Vite
 
+🚀 Live Demo: Try the App
+
+A simple and responsive Todo List application built with React. It helps users manage their daily tasks, track completed work, and keep their tasks saved even after refreshing the page.
+
 ## 🚀 Getting Started
 
 Follow these steps to run the project locally.
